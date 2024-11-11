@@ -11,7 +11,7 @@ export default function ItemEstoque({ id, name, number, price, more, less }) {
                 more(id,number+1)
             }}>+</button>
             <button className={styles.botoesAcoes} onClick={() =>{
-                less(id,number)
+                less(id,number-1)
             }}>-</button>
         </div>
     </>

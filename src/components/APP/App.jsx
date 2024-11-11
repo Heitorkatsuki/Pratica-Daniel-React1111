@@ -2,7 +2,7 @@ import FormularioProduto from "../FormularioProduto/FormularioProduto";
 import ItemEstoque from "../ItemEstoque/ItemEstoque"
 import styles from "./App.module.css"
 
-export default function App({ }){
+export default function App(){
 
     const [itens, setTasks] = useState([]);
 
@@ -20,13 +20,20 @@ export default function App({ }){
         setTasks(itens.map((item) => item.id === id ? {...item,number : newNumber} : item))
     }
 
+    const less = (id, newNumber) => {
+        setTasks(
+            itens.map((item) =>
+            item.id === id ? { ...item, number: newNumber } : item
+        )
+    );
+};
+
     return(
         <>
         <h1 className={styles.titulo}>Gerenciador de estoque</h1>
         <div className={styles.aplicativo}>
-
             <FormularioProduto addItem={addItem}></FormularioProduto>
-            <ListaEstoque more={more}></ListaEstoque>
+            <ListaEstoque more={more} less={less}></ListaEstoque>
         </div>
         </>
     )
